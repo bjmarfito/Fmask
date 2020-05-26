@@ -5,7 +5,7 @@ function clr_pct = autoFmask(varargin)
 %
 % Description
 %     Shi Qiu, Zhe Zhu, Binbin He
-%     shi.qiu@uconn.edu, zhe.zhu@uconn.edu, binbinhe@uestc.edu.cn
+%     shi.qiu@uconn.edu, zhe@uconn.edu, binbinhe@uestc.edu.cn
 %     Automatically detect clouds, cloud shadows, snow, and water for
 %     Landsats 4-7, Landsat 8, and Sentinel 2 images.
 %
