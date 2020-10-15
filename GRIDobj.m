@@ -1,7 +1,7 @@
 classdef GRIDobj
     
 % History of modifications:  
-% Sometimes there are serval tiffinfo, we will only
+% Sometimes there are several tiffinfo, we will only
 % have the 1st one (see line # 334). Shi QIU  Oct. 15, 2020
 
 %GRIDobj Create instance of a GRIDobj
@@ -331,7 +331,7 @@ classdef GRIDobj
                     % Riedl)
                     tiffinfo = imfinfo(filename);
                     if isfield(tiffinfo,'GDAL_NODATA')
-                        % sometimes there are serval tiffinfo, we will only
+                        % sometimes there are several tiffinfo, we will only
                         % have the 1st one. --- by Shi QIU 
                         nodata_val = str2double(tiffinfo(1).GDAL_NODATA);
                     end
