@@ -9,7 +9,7 @@ function clr_pct = autoFmask(varargin)
 %     Automatically detect clouds, cloud shadows, snow, and water for
 %     Landsats 4-7, Landsat 8, and Sentinel 2 images.
 %
-%     This 4.1 version has better cloud, cloud shadow, and snow detection
+%     This 4.3 version has better cloud, cloud shadow, and snow detection
 %     results for Sentinel-2 data and better results (compared to the 3.3
 %     version that is being used by USGS as the Colection 1 QA Band) for
 %     Landsats 4-8 data as well.
@@ -56,10 +56,10 @@ function clr_pct = autoFmask(varargin)
 %
 %        
 % Author:  Shi Qiu (shi.qiu@uconn.edu)
-% Last Date: May 8, 2020
+% Last Date: Oct. 15, 2020
     warning('off','all'); % do not show warning information
     tic
-    fmask_soft_name='Fmask 4.2';
+    fmask_soft_name='Fmask 4.3';
     fprintf('%s start ...\n',fmask_soft_name);
     path_data=pwd;
     
