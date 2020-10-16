@@ -5,9 +5,9 @@ If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (s
 
 **IMPORTANT:**
 
-This Github page **ONLY** includes the Matlab code for Fmask 4.3. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/drive/folders/1bVwvlGDFOsWnVj5b3MqI5yqRDoi8g935?usp=sharing), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source Code.
+This Github page **ONLY** includes the Matlab code for Fmask 4.3. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source Code.
 
-**Fmask 4.3 softwares** (including standalones with GUI and without GUI) on Windows and Linux (~1G without MCR and ~3G with MCR) are also ready to use now! It can be downloaded at this [Google Drive](https://drive.google.com/drive/folders/1bVwvlGDFOsWnVj5b3MqI5yqRDoi8g935?usp=sharing).
+**Fmask 4.3 softwares** (including standalones with GUI and without GUI) on Windows and Linux (~1G without MCR and ~3G with MCR) are also ready to use now! It can be downloaded at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing).
 
 This 4.3 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This one software can be used for **Landsats 4-8 Collection 1 (or Collection 2) Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
 
@@ -20,7 +20,7 @@ This 4.3 version has substantial better cloud, cloud shadow, and snow detection 
 # 4.3 Version
 1) Fixed the bug when GRIDobj reads geotiff with several tiffinfos (see GRIDobj.m). (Shi Qiu 10/15/2020)
 
-# 4.2 Version
+----- 4.2 version below ---- (4.2 version can be download at this [Google Drive]( https://drive.google.com/drive/folders/1bVwvlGDFOsWnVj5b3MqI5yqRDoi8g935?usp=sharing)
 2) Update Fmask tool for processing Landsat Collection 2 data; and allow the cloud probability thershold in a larger range such as [-100, 100] in the GUI version. (Shi Qiu 4/8/2020)
 
 ----- 4.1 version below ---- (4.1 version can be download at this [Google Drive](https://drive.google.com/open?id=1l84t_lbp5Cp5v8L_Rbzk3WQHap7MdFwc) for Matlab code and this [Google Drive](https://drive.google.com/drive/folders/1oVefP9G-TD2vhoCaaKCxQjvAnUlrwB19?usp=sharing) for standalones)
