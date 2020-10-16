@@ -20,7 +20,7 @@ This 4.3 version has substantial better cloud, cloud shadow, and snow detection 
 # 4.3 Version
 1) Fixed the bug when GRIDobj reads geotiff with several tiffinfos (see GRIDobj.m). (Shi Qiu 10/15/2020)
 
------ 4.2 version below ---- (4.2 version can be download at this [Google Drive]( https://drive.google.com/drive/folders/1bVwvlGDFOsWnVj5b3MqI5yqRDoi8g935?usp=sharing)
+----- 4.2 version below ---- (4.2 version can be download at this [Google Drive](https://drive.google.com/drive/folders/1bVwvlGDFOsWnVj5b3MqI5yqRDoi8g935?usp=sharing))
 
 2) Update Fmask tool for processing Landsat Collection 2 data; and allow the cloud probability thershold in a larger range such as [-100, 100] in the GUI version. (Shi Qiu 4/8/2020)
 
