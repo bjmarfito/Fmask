@@ -5,16 +5,21 @@ If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (s
 
 **IMPORTANT:**
 
-This Github page **ONLY** includes the Matlab code for Fmask 4.3. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source Code. **For MATLAB versions later than 2020b, please delete the geotiffread.m and geotiffinfo.m in the Fmask Matlab package (standalones will not be affected)**.
+This Github page **ONLY** includes the Matlab code for Fmask 4.3. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source Code.
+**For MATLAB versions later than 2020b, please delete the geotiffread.m and geotiffinfo.m in the Fmask Matlab package (standalones are not be affected)**.
 
 **Fmask 4.3 softwares** (including standalones with Graphical User Interface (GUI) and without GUI) on Windows and Linux (~1G without MCR and ~3G with MCR) are also ready to use now! It can be downloaded at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing).
 
 This 4.3 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This one software can be used for **Landsats 4-8 Collection 1 (or Collection 2) Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
 
 
-**IMPORTANT:** Majority of the current Collection 1 Landsats 4-8 QA Band provided by USGS are derived form **3.3 Version of Fmask algorithm** based on default parameters (cloud probability is 22.5% and buffer pixel size is 3). For example, (1) The Cloud (bit 4) is based on Fmask cloud mask (0 is not cloud and 1 is cloud in Fmask); (2) The Cloud Confidence (bits 5-6) is based on Fmask cloud probability in which >22.5% is high (11), >12.5% is medium (10), and <12.5% is low (01) with 00 kept for future use; (3) Snow/ice Confidence (bits 9-10) and Cloud Shadow Confidence (bits 7-8) has only low confidence (01) and high confidence (11) which correspond to no and yes respectively in snow/ice and cloud shadow mask provided by Fmask.
+**IMPORTANT:**
 
-**IMPORTANT:** When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud shadow, but no dilation for cloud, snow, and water.
+Majority of the current Collection 1 Landsats 4-8 QA Band provided by USGS are derived form **3.3 Version of Fmask algorithm** based on default parameters (cloud probability is 22.5% and buffer pixel size is 3). For example, (1) The Cloud (bit 4) is based on Fmask cloud mask (0 is not cloud and 1 is cloud in Fmask); (2) The Cloud Confidence (bits 5-6) is based on Fmask cloud probability in which >22.5% is high (11), >12.5% is medium (10), and <12.5% is low (01) with 00 kept for future use; (3) Snow/ice Confidence (bits 9-10) and Cloud Shadow Confidence (bits 7-8) has only low confidence (01) and high confidence (11) which correspond to no and yes respectively in snow/ice and cloud shadow mask provided by Fmask.
+
+**IMPORTANT:**
+
+When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud shadow, but no dilation for cloud, snow, and water.
 
 
 # 4.3 Version
