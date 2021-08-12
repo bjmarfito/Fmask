@@ -66,9 +66,6 @@ Please cite the following papers:
 **paper 5: Qiu, S., et al., Making Landsat Time Series Consistent: Evaluating and Improving Landsat Analysis Ready Data, Remote Sensing (2019), [doi.org/10.3390/rs11010051](https://doi.org/10.3390/rs11010051) (First paper introducing Fmask 4.0 for improving LTS consistency).**
 
 
-**The training data** for the Fmask 4.0 are availble at [this link](https://landsat.usgs.gov/landsat-8-cloud-cover-assessment-validation-data).
-
-
 After running Fmask 4.0, there will be an image called XXXFmask.tif. The image values are presenting the following classes:
 
 0 => clear land pixel
