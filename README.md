@@ -68,8 +68,6 @@ Please cite the following papers:
 
 **The training data** for the Fmask 4.0 are availble at [this link](https://landsat.usgs.gov/landsat-8-cloud-cover-assessment-validation-data).
 
-**The validation data** for the Fmask 4.0 are availble at this [Google Drive](https://drive.google.com/drive/folders/15mM0Ajfm6310xDh9msaM9Kp4h6mvF22E?usp=sharing).
-
 
 After running Fmask 4.0, there will be an image called XXXFmask.tif. The image values are presenting the following classes:
 
