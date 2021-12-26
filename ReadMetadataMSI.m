@@ -27,7 +27,7 @@ TileID = S.n1_colon_General_Info.TILE_ID.Text;
 
 ds =  S.n1_colon_General_Info.SENSING_TIME.Text;
 
-DN = (datenum( ds ,'yyyy-mm-ddTHH:MM:SS');
+DN = datenum( ds ,'yyyy-mm-ddTHH:MM:SS');
 % DN = (datenum( ds ,'yyyy-mm-ddTHH:MM:SS')+str2double(ds(end-4:end-1))/3600/24); % not unique format for date in Sentinel-2 data
 
 DS = datestr(DN);
