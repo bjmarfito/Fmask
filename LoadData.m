@@ -18,6 +18,7 @@ function [data_meta,data_toabt,angles_view,trgt] = LoadData(path_data,sensor,Inp
 %
 % History
 %
+%     2. Modified for new Sentinel-2 data format, baseline 4.00 (26. Dec, 2021)
 %     1. Create this function. (17. May, 2017) 
 %
 % Input arguments
@@ -37,15 +38,26 @@ function [data_meta,data_toabt,angles_view,trgt] = LoadData(path_data,sensor,Inp
 %
 %        
 % Author:  Shi Qiu (shi.qiu@ttu.edu)
-% Date: 17. May, 2017 
+% Date: 26. Dec, 2021
 
     trgt=[];
     angles_view=[];
     if strcmp(sensor , 'S_MSI' )
         
 %         fprintf('Load TOA reflectances from the Level-1C product.\n');
+       
+       % offset or not
+       % if offset available, the data should be BASELINE 4.00---- the new sentinel-2 data
+       % if offset unavailable, the function of processing old sentinel=2 data will be triggered
+       [band_offsets, quantif] = ReadS2RadiometricOffset(InputFile);
+       
         % Load data for Sentinel 2
-        [~,data,trgt,dim,bbox,ul,zen,azi,zc,Angles,satu_B1,satu_B2,satu_B3,resolu]=nd2toarbt_msi(InputFile);
+        if isempty(band_offsets)
+            [~,data,trgt,dim,bbox,ul,zen,azi,zc,Angles,satu_B1,satu_B2,satu_B3,resolu]=nd2toarbt_msi(InputFile);
+        else 
+            [~,data,trgt,dim,bbox,ul,zen,azi,zc,Angles,satu_B1,satu_B2,satu_B3,resolu]=nd2toarbt_msi2(InputFile, band_offsets, quantif);
+        end
+        
         %% Input data class defination
         data_meta=ObjMeta;
         data_toabt=ObjTOABT;
