@@ -2,6 +2,8 @@ function MSIinfo=ReadMetadataMSI(FilesInfo)
 % DataStrip='S2A_OPER_PRD_MSIL1C_PDMC_20150818T101237_R022_V20150813T102406_20150813T102406';
 % Granule='S2A_OPER_MSI_L1C_TL_MTI__20150813T201603_A000734_T32TPS_N01';
 
+% Debug the time conventor at line # 31(16/12/2021 Shi)
+
 DirIn=FilesInfo.DirIn;
 % Num=FilesInfo.Num;
 DataStrip = FilesInfo.DataStrip; 
@@ -23,8 +25,10 @@ S = S.n1_colon_Level_dash_1C_Tile_ID;
 
 TileID = S.n1_colon_General_Info.TILE_ID.Text;
 
-ds =  S.n1_colon_General_Info.SENSING_TIME.Text ;
-DN = (datenum( ds ,'yyyy-mm-ddTHH:MM:SS')+str2double(ds(end-4:end-1))/3600/24);
+ds =  S.n1_colon_General_Info.SENSING_TIME.Text;
+
+DN = (datenum( ds ,'yyyy-mm-ddTHH:MM:SS');
+% DN = (datenum( ds ,'yyyy-mm-ddTHH:MM:SS')+str2double(ds(end-4:end-1))/3600/24); % not unique format for date in Sentinel-2 data
 
 DS = datestr(DN);
 
