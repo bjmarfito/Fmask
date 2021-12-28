@@ -436,7 +436,7 @@ function auxi_data = MosaicLocalAuxiData(auxi_type,auxi_path,cache_path,target_g
                 auxi_data_tmp = reproject2utm(auxi_data_part_tmp,target_gridobj);
                 clear auxi_data_part_tmp;
 %                 auxi_data_part_tmp.Z=fillmissing(auxi_data_part_tmp.Z,'constant',0);% no data indicates no sure whether there is water.
-                auxi_data=max(auxi_data,auxi_data_tmp.Z);
+                auxi_data=max(auxi_data, double(auxi_data_tmp.Z)); % same format
                 clear auxi_data_tmp;
 %                 delete(filename); % delete the files
             else
