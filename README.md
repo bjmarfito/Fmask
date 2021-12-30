@@ -5,9 +5,9 @@ If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (s
 
 **IMPORTANT:**
 
-This Github page **ONLY** includes the Matlab code for Fmask 4.4. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/drive/folders/1chO-RP8FYIobCnYPYdGEt0OeQeMoYLd0?usp=sharing), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source code.
+This Github page **ONLY** includes the Matlab code for Fmask 4.4. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/file/d/1LzfZSW3Ku4nfr6aSfu-nR_zgygAiBXUD/view?usp=sharingg), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source code.
 
-**Fmask 4.4 softwares** (including standalones with Graphical User Interface (GUI) and without GUI) on Windows and Linux (~1G without MCR and ~3G with MCR) are also ready to use now! They can be downloaded at this [Google Drive](https://drive.google.com/drive/folders/1chO-RP8FYIobCnYPYdGEt0OeQeMoYLd0?usp=sharing).
+**Fmask 4.4 standalones** with graphical User Interface (UI) and without UI on Windows or Linux, ~2G with MATLAB Compiler Runtime (MCR), are also ready to use now! They can be downloaded at this [Google Drive](https://drive.google.com/drive/folders/1chO-RP8FYIobCnYPYdGEt0OeQeMoYLd0?usp=sharing).
 
 This 4.4 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This one software can be used for **Landsats 4-8 Collection 1 (or Collection 2) Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
 
