@@ -7,9 +7,9 @@ If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (s
 
 This Github page **ONLY** includes the Matlab code for Fmask 4.4. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/file/d/1LzfZSW3Ku4nfr6aSfu-nR_zgygAiBXUD/view?usp=sharingg), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source code.
 
-**Fmask 4.4 standalones** with graphical User Interface (UI) and without UI on Windows or Linux, ~2G with MATLAB Compiler Runtime (MCR), are also ready to use now! They can be downloaded at this [Google Drive](https://drive.google.com/drive/folders/1chO-RP8FYIobCnYPYdGEt0OeQeMoYLd0?usp=sharing).
+**Fmask 4.4 softwares** with graphical User Interface (UI) and without UI on Windows or Linux can be downloaded from this [Google Drive](https://drive.google.com/drive/folders/1chO-RP8FYIobCnYPYdGEt0OeQeMoYLd0?usp=sharing). Note that the Fmask softwares/standalones include MATLAB Compiler Runtime (MCR), with ~2G in total, which do not require a MATLAB license.
 
-This 4.4 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This one software can be used for **Landsats 4-8 Collection 1 (or Collection 2) Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
+This 4.4 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This one software can be used for **Landsats 4-8 Collection 1/2 Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
 
 
 **IMPORTANT:**
@@ -21,7 +21,7 @@ Majority of the current Collection 1 Landsats 4-8 QA Band provided by USGS are d
 When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud shadow, but no dilation for cloud, snow, and water.
 
 # 4.4 Version
-1) To process the new Sentinel-2 data with baseline 04.00, to fix bugs in producing the view angles (detectors sorted) and coverting the datetime of Sentinel-2 data (irregular format sometimes), and to update the functions of processing Landsat Collection 2 data. (Shi Qiu 12/28/2021)
+1) To process the new Sentinel-2 data with [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline), to fix bugs in producing the view angles (detectors sorted) and coverting the datetime of Sentinel-2 data (irregular format sometimes), and to update the functions of processing Landsat Collection 2 data. (Shi Qiu 12/28/2021)
 
 ----- 4.3 version below ---- (4.3 version can be download at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing))
 
