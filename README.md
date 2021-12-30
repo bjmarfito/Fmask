@@ -9,7 +9,7 @@ This Github page **ONLY** includes the Matlab code for Fmask 4.4. **The Matlab p
 
 **Fmask 4.4 softwares** with graphical User Interface (UI) and without UI on Windows or Linux can be downloaded from this [Google Drive](https://drive.google.com/drive/folders/1chO-RP8FYIobCnYPYdGEt0OeQeMoYLd0?usp=sharing). Note that the Fmask softwares/standalones include MATLAB Compiler Runtime (MCR), with ~2G in total, which do not require a MATLAB license.
 
-This 4.4 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This one software can be used for **Landsats 4-8 Collection 1/2 Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
+This 4.4 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This version can be used for **Landsats 4-8 Collection 1/2 Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
 
 
 **IMPORTANT:**
