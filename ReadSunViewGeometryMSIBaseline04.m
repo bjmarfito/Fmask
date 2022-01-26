@@ -2,7 +2,9 @@ function [MSIinfo Angles CM]  = ReadSunViewGeometryMSIBaseline04 (DataStrip,Gran
 % DataStrip='S2A_OPER_PRD_MSIL1C_PDMC_20150818T101451_R080_V20150817T114755_20150817T114755';
 % Granule='S2A_OPER_MSI_L1C_TL_SGS__20150817T131818_A000792_T28QBG_N01';
 % this is derived from Fmask 3.3 for Sentinel 2.
-
+% 
+% Debug the selection of Matdetec== DetectFootPrint.Ndect(i) from Matdetec==i (Jan 24, 2022)
+%
 InterpMethod = 'linear';'nearest';
 
 % Dmain = '/nobackupp6/jju/S2SAFE/';
@@ -181,7 +183,7 @@ for iB = 1:length(BandList)
       Z = MSIinfo.Angles.(Chp{iC})(:,:,BandSel,MSIinfo.Angles.DeteIdList==DetectFootPrint.Ndect(i)) ;
       Z = single(inpaint_nans(Z));
       
-      testMatdetec = Matdetec==i ;
+      testMatdetec = Matdetec== DetectFootPrint.Ndect(i);
       [Ista dum] = find(max(testMatdetec,[],2),1,'first');
       [Iend dum] = find(max(testMatdetec,[],2),1,'last');
       [dum Jsta] = find(max(testMatdetec,[],1),1,'first');

@@ -41,7 +41,12 @@ function [im_th,TOAref,trgt,ijdim_ref,bbox,ul,zen,azi,zc,Angles2,B1Satu,B2Satu,B
    
 
     %% Metadata read ReadSunViewGeometryMSI(DataStrip,Granule,BandSel,PsizeOut,Dmain)
-    [MSIinfo,Angles]  = ReadSunViewGeometryMSI (FilesInfo.DataStrip,FilesInfo.Granule,4,10,FilesInfo.DirIn);
+    try
+        [MSIinfo,Angles]  = ReadSunViewGeometryMSI (FilesInfo.DataStrip,FilesInfo.Granule,4,10,FilesInfo.DirIn);
+    catch
+        [MSIinfo,Angles]  = ReadSunViewGeometryMSIBaseline04 (FilesInfo.DataStrip,FilesInfo.Granule,4,10,FilesInfo.DirIn);
+    end
+    
 
     Angles2.VAA  = Angles.VAA_B04 ;
     Angles2.VZA  = Angles.VZA_B04 ;

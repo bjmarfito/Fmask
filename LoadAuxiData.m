@@ -38,8 +38,10 @@ function [dem_out,slope_out,aspect_out,water_occur] = LoadAuxiData(doc_path,fnam
 %
 %
 %        
-% Author:  Shi Qiu (shi.qiu@ttu.edu)
-% Date: 22. September, 2017 
+% Support the path of auxiliaray data's directory
+%
+% Author:  Shi Qiu (shi.qiu@uconn.edu)
+% Date: Jan., 25, 2022 
 
 
     % instant paras
@@ -49,32 +51,46 @@ function [dem_out,slope_out,aspect_out,water_occur] = LoadAuxiData(doc_path,fnam
     p.FunctionName = 'AuxiParameters';
     addParameter(p,'parallel',0);
     addParameter(p,'userdem','');
+    addParameter(p,'auxi','');
      % request user's input
     parse(p,varargin{:});
     isParallel=p.Results.parallel;
     
     userdem = p.Results.userdem; % dem path
-
-    if isdeployed % Stand-alone mode.
-%         m_path = ctfroot;
-        if ismac||isunix
-            % Code to run on Mac plaform
-            % Code to run on Linux plaform
-            [~, result] = system('echo $PATH');
-            m_path = char(regexpi(result, '(.*?):', 'tokens', 'once'));  
-        elseif ispc
-            % Code to run on PC plaform
-            [~, result] = system('path');
-            m_path = char(regexpi(result, 'Path=(.*?);', 'tokens', 'once'));
-            clear result;
+    pathauxi = p.Results.auxi;
+    if isempty(pathauxi)
+        if isdeployed % Stand-alone mode.
+        %         m_path = ctfroot;
+                if ismac||isunix
+                    % Code to run on Mac plaform
+                    % Code to run on Linux plaform
+                    [~, result] = system('echo $PATH');
+                    m_path = char(regexpi(result, '(.*?):', 'tokens', 'once'));  
+                elseif ispc
+                    % Code to run on PC plaform
+                    [~, result] = system('path');
+                    m_path = char(regexpi(result, 'Path=(.*?);', 'tokens', 'once'));
+                    clear result;
+                end
+            else % MATLAB mode.
+                m_path=mfilename('fullpath');
+                m_path(end-12:end)=[]; % remove the '/LoadAuxiData'
         end
-    else % MATLAB mode.
-        m_path=mfilename('fullpath');
-        m_path(end-12:end)=[]; % remove the '/LoadAuxiData'
+        m_path = fullfile(m_path, 'AuxiData');
+    else
+        m_path = pathauxi; % direct directory
     end
-    water_path=fullfile(m_path,'AuxiData','GSWO150ZIP');
-    dem_path=fullfile(m_path,'AuxiData','GTOPO30ZIP');
+
+    % test sccess assess to auxiliary data
+    water_path=fullfile(m_path,'GSWO150ZIP');
+    dem_path=fullfile(m_path,'GTOPO30ZIP');
+    if ~isfolder(m_path) || ~isfolder(water_path)  || ~isfolder(dem_path)
+        fprintf('Warning: Fail to locate the auxiliary data. Please input the directory path of the auxiliary data.\n');
+    else
+        fprintf('Successully locate the auxiliary data.\n');
+    end
     clear m_path;
+
 
 %     water_path=fullfile('.','AuxiData','GSWO150ZIP');
 %     dem_path=fullfile('.','AuxiData','GTOPO30ZIP');
@@ -338,7 +354,7 @@ function auxi_data=MosaicLocalDEM(auxi_path,cache_path,target_gridobj,bbox)
 % %                 auxi_data_part_tmp.refmat = makerefmat(LON11, LAT11, DLON, DLAT);
                 auxi_data_tmp = reproject2utm(auxi_data_part_tmp,target_gridobj);
                 clear auxi_data_part_tmp;
-                auxi_data=max(auxi_data, double(auxi_data_tmp.Z)); % same format
+                auxi_data=max(auxi_data, double(auxi_data_tmp.Z));
                 clear auxi_data_tmp;
 % %                 delete(filename); % delete the files
             end
@@ -436,7 +452,7 @@ function auxi_data = MosaicLocalAuxiData(auxi_type,auxi_path,cache_path,target_g
                 auxi_data_tmp = reproject2utm(auxi_data_part_tmp,target_gridobj);
                 clear auxi_data_part_tmp;
 %                 auxi_data_part_tmp.Z=fillmissing(auxi_data_part_tmp.Z,'constant',0);% no data indicates no sure whether there is water.
-                auxi_data=max(auxi_data, double(auxi_data_tmp.Z)); % same format
+                auxi_data=max(auxi_data,double(auxi_data_tmp.Z));
                 clear auxi_data_tmp;
 %                 delete(filename); % delete the files
             else

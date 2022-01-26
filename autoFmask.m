@@ -31,13 +31,14 @@ function clr_pct = autoFmask(varargin)
 %               urban/built-up and (mountian) snow/ice. Default: 150 meters
 %               for Landsats 4-7 and 90 meters for Landsat 8 and
 %               Sentinel-2.
-%     sw        ShadowWater (SW) means the shadow of cloud over water.
+%     sw      ShadowWater (SW) means the shadow of cloud over water.
 %               Default: False
 %               We do not suggest mask out the cloud shadow over water
 %               since it is less meanful and very time-comsuing.
 %     udem      The path of User's DEM data. (.tiff). If users provide
 %               local DEM data, Fmask 4.1 will process the image along with this DEM
 %               data; or, the default USGS GTOPO30 will be used.
+%     auxi      The path of the auxiliary data ('AuxiData'). (for standalone only)
 %
 % Output arguments
 %
@@ -56,7 +57,7 @@ function clr_pct = autoFmask(varargin)
 %
 %        
 % Author:  Shi Qiu (shi.qiu@uconn.edu) and Zhe Zhu (zhe@uconn.edu)
-% Last Date: Dec. 26, 2021
+% Last Date: Jan. 25, 2022
 % Copyright @ GERS Lab, UCONN.
 
     warning('off','all'); % do not show warning information
@@ -73,7 +74,7 @@ function clr_pct = autoFmask(varargin)
     addParameter(p,'cloud',3);
     addParameter(p,'shadow',3);
     addParameter(p,'snow',0);
- 
+   
     %% read info from .xml.
     [sensor,~,InputFile,main_meta] = LoadSensorType(path_data);
     if isempty(sensor)
@@ -91,6 +92,9 @@ function clr_pct = autoFmask(varargin)
     
     % user's path for DEM
     addParameter(p,'udem','');
+
+    % user's path for the auxiliaray data
+    addParameter(p,'auxi','');
     
     % request user's input
     parse(p,varargin{:});
@@ -105,6 +109,8 @@ function clr_pct = autoFmask(varargin)
 
     % users can use the local dem.
     userdem = p.Results.udem;
+    % input the folder of auxiliaray data
+    pathauxi = p.Results.auxi;
     clear p;
     
     fprintf('Cloud/cloud shadow/snow dilated by %d/%d/%d pixels.\n',cldpix,sdpix,snpix);
@@ -118,9 +124,9 @@ function clr_pct = autoFmask(varargin)
         
     if isempty(userdem)
         % default DEM
-        [dem,slope,aspect,water_occur] = LoadAuxiData(fullfile(path_data,data_meta.Output),data_meta.Name,data_meta.BBox,trgt,false); % true false
+        [dem,slope,aspect,water_occur] = LoadAuxiData(fullfile(path_data,data_meta.Output),data_meta.Name,data_meta.BBox,trgt,false, 'auxi', pathauxi); % true false
     else
-        [dem,slope,aspect,water_occur] = LoadAuxiData(fullfile(path_data,data_meta.Output),data_meta.Name,data_meta.BBox,trgt,false,'userdem',userdem); % true false
+        [dem,slope,aspect,water_occur] = LoadAuxiData(fullfile(path_data,data_meta.Output),data_meta.Name,data_meta.BBox,trgt,false, 'userdem',userdem, 'auxi', pathauxi); % true false
     end
 
     fprintf('Detect potential clouds, cloud shadows, snow, and water.\n');

@@ -5,69 +5,58 @@ If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (s
 
 **IMPORTANT:**
 
-This Github page **ONLY** includes the Matlab code for Fmask 4.4. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/drive/folders/174EAXc2Fu18ozd2h9d2aMm96OWTwKJ_d?usp=sharing), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source code.
+This Github page **ONLY** includes the Matlab code for Fmask 4.1. **The Matlab package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/open?id=1l84t_lbp5Cp5v8L_Rbzk3WQHap7MdFwc), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-8 and Sentinel-2 images into a folder. Note that Mapping Toolbox in Matlab is required for using the source Code.
 
-**Fmask 4.4 softwares** with graphical User Interface (UI) and without UI on Windows or Linux can be downloaded from this [Google Drive](https://drive.google.com/drive/folders/174EAXc2Fu18ozd2h9d2aMm96OWTwKJ_d?usp=sharing). Note that the Fmask softwares/standalones include MATLAB Compiler Runtime (MCR), with ~2G in total, which do not require a MATLAB license. **For the Linux standalone, if it fails to locate the auxiliary data (a message will be displayed), please set up the direct path of the auxiliary data package by using the command, for example, Fmask_4_4 "xxx\xxx\xxx\AuxiData". (The directory of the auxiliary data \<AuxiData> usually is at the same location as the installed application, or copy the dataset from the MATLAB code package)**
+**Fmask 4.1 softwares** (including standalones with GUI and without GUI) on Windows, Mac, and Linux (~1G) are also ready to use now! It can be downloaded at this [Google Drive](https://drive.google.com/drive/folders/1SXBnEBDJ1Kbv7IQ9qIgqloYHZfdP6O1O). Note the standalones require Internet Connection to download [Matlab Runtime](https://www.mathworks.com/help/compiler/install-the-matlab-runtime.html). Also, you can contact us to request the version with Matlab Runtime (~3G), which can be installed without Internet.
 
-This 4.4 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This version can be used for **Landsats 4-8 Collection 1/2 Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
+This 4.1 version has substantial better cloud, cloud shadow, and snow detection results for Sentinel 2 and better results (compared to the 3.3 version that is currently being used by USGS as the Collection 1 QA Band) for Landsats 4-8 . This one software can be used for **Landsats 4-8 Collection 1 Level 1 product (Digital Numbers)** and **Sentinel 2 Level-1C product (Top Of Atmosphere reflectance)** at the same time.
 
 
-**IMPORTANT:**
+**IMPORTANT:** Majority of the current Collection 1 Landsats 4-8 QA Band provided by USGS are derived form **3.3 Version of Fmask algorithm** based on default parameters (cloud probability is 22.5% and buffer pixel size is 3). For example, (1) The Cloud (bit 4) is based on Fmask cloud mask (0 is not cloud and 1 is cloud in Fmask); (2) The Cloud Confidence (bits 5-6) is based on Fmask cloud probability in which >22.5% is high (11), >12.5% is medium (10), and <12.5% is low (01) with 00 kept for future use; (3) Snow/ice Confidence (bits 9-10) and Cloud Shadow Confidence (bits 7-8) has only low confidence (01) and high confidence (11) which correspond to no and yes respectively in snow/ice and cloud shadow mask provided by Fmask.
 
-Majority of the current Collection 1 Landsats 4-8 QA Band provided by USGS are derived form **3.3 Version of Fmask algorithm** based on default parameters (cloud probability is 22.5% and buffer pixel size is 3). For example, (1) The Cloud (bit 4) is based on Fmask cloud mask (0 is not cloud and 1 is cloud in Fmask); (2) The Cloud Confidence (bits 5-6) is based on Fmask cloud probability in which >22.5% is high (11), >12.5% is medium (10), and <12.5% is low (01) with 00 kept for future use; (3) Snow/ice Confidence (bits 9-10) and Cloud Shadow Confidence (bits 7-8) has only low confidence (01) and high confidence (11) which correspond to no and yes respectively in snow/ice and cloud shadow mask provided by Fmask.
+**IMPORTANT:** When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud shadow, but no dilation for cloud, snow, and water.
 
-**IMPORTANT:**
 
-When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud shadow, but no dilation for cloud, snow, and water.
+# 4.1 Version
 
-# 4.4 Version
-1) To fix the errors in computing the ID of detector footprints during the view angle generation of the new Sentinel-2 data [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline) (This may result in wrong locations of cloud shadow). (Shi Qiu 1/26/2022)
+1) Added a input varible defining whether the shadow of the cloud over water will be matched or not. We do not recommand to detect(match) the cloud shadow over water since this is less meaningful and very time-consuming. At the same time, fixed the bug that the auxiliary data may not be used for some Sentinel-2 images, of which the extent in the metadata is defined in [0 360] rather than [-180 180]. (Shi Qiu 3/17/2020)
 
-2) To process the new Sentinel-2 data with [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline), to fix bugs in producing the view angles (detectors sorted) and coverting the datetime of Sentinel-2 data (irregular format sometimes), and to update the functions of processing Landsat Collection 2 data. (Shi Qiu 12/28/2021)
+----- 4.0 version below ----
 
------ 4.3 version below ---- (4.3 version can be download at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing))
+2) Fixed the bug that the cloud shadows in Sentinel-2 imagery would be projected along a wrong direction when solar azimuth angle > 180 degrees. (Shi Qiu 01/19/2019)
 
-3) Fixed the bug when GRIDobj reads geotiff with several tiffinfos (see GRIDobj.m). (Shi Qiu 10/15/2020)
+3) Integrated Cloud Displacement Index (CDI) into this Fmask 4.0 for better seperating clouds from bright surfaces especail for Sentinel-2. The CDI was specially designed to separate clouds from bright surfaces based on the view angle parallax of the three near infrared bands (band 7, 8 and 8a) ([Frantz et al., 2018](https://doi.org/10.1016/j.rse.2018.04.046)).  (Shi Qiu and Zhe Zhu 06/03/2018)
 
------ 4.2 version below ---- (4.2 version can be download at this [Google Drive](https://drive.google.com/drive/folders/1bVwvlGDFOsWnVj5b3MqI5yqRDoi8g935?usp=sharing))
+4) Revised the method to identify the potential false positive cloud pixels.  (Shi Qiu and Zhe Zhu 05/23/2018)
 
-4) Update Fmask tool for processing Landsat Collection 2 data; and allow the cloud probability thershold in a larger range such as [-100, 100] in the GUI version. (Shi Qiu 4/8/2020)
+5) Restricted the height of the clouds located in the scene boundary into the predicted cloud height derived from its neighboring clouds.  (Shi Qiu 04/05/2018)
 
------ 4.1 version below ---- (4.1 version can be download at this [Google Drive](https://drive.google.com/open?id=1l84t_lbp5Cp5v8L_Rbzk3WQHap7MdFwc) for Matlab code and this [Google Drive](https://drive.google.com/drive/folders/1oVefP9G-TD2vhoCaaKCxQjvAnUlrwB19?usp=sharing) for standalones)
+6) Removed the overlap between the predicted cloud shadow and the potential cloud shadow layer for cloud shadow detection. (Shi Qiu and Zhe Zhu 03/29/2018)
 
-5) The cloud shadow mask over water would not be provided at default settings since this will be less meaningful to use and very time-consuming to process. At the same time, fixed the bug that the auxiliary data may not be used for some Sentinel-2 images, of which the extent in the metadata is defined in [0 360] rather than [-180 180]. (Shi Qiu 3/17/2020)
+7) Fixed the bug that the reading blue band using GRIDobj may lead to Nan value for Landsat images. (Shi Qiu 03/26/2018)
 
------ 4.0 version below ---- (4.0 version can be download at this [Google Drive](https://drive.google.com/open?id=1SXBnEBDJ1Kbv7IQ9qIgqloYHZfdP6O1O))
+8) Improved the computational efficiency specially for cloud shadow matching procedure.  (Zhe Zhu and Shi Qiu 03/24/2018)
 
-6) Fixed the bug that the cloud shadows in Sentinel-2 imagery would be projected along a wrong direction when solar azimuth angle > 180 degrees. (Shi Qiu 01/19/2019)
-
-7) Integrated Cloud Displacement Index (CDI) into this Fmask 4.0 for better seperating clouds from bright surfaces especail for Sentinel-2. The CDI was specially designed to separate clouds from bright surfaces based on the view angle parallax of the three near infrared bands (band 7, 8 and 8a) ([Frantz et al., 2018](https://doi.org/10.1016/j.rse.2018.04.046)).  (Shi Qiu and Zhe Zhu 06/03/2018)
-
-8) Revised the method to identify the potential false positive cloud pixels.  (Shi Qiu and Zhe Zhu 05/23/2018)
-
-9) Restricted the height of the clouds located in the scene boundary into the predicted cloud height derived from its neighboring clouds.  (Shi Qiu 04/05/2018)
-
-10) Removed the overlap between the predicted cloud shadow and the potential cloud shadow layer for cloud shadow detection. (Shi Qiu and Zhe Zhu 03/29/2018)
-
-11) Fixed the bug that the reading blue band using GRIDobj may lead to Nan value for Landsat images. (Shi Qiu 03/26/2018)
-
-12) Improved the computational efficiency specially for cloud shadow matching procedure.  (Zhe Zhu and Shi Qiu 03/24/2018)
-
-13) Released Fmask 4.0 beta version. (Shi Qiu, Zhe Zhu, and Binbin He 03/22/2018)
+9) Released Fmask 4.0 beta version. (Shi Qiu, Zhe Zhu, and Binbin He 03/22/2018)
 
 
 Please cite the following papers:
 
-**paper 1: Qiu S., et al., Fmask 4.0: Improved cloud and cloud shadow detection in Landsats
+**paper 1: Qiu S., Zhu Z., and He B., Fmask 4.0: Improved cloud and cloud shadow detection in Landsats
 4-8 and Sentinel-2 imagery, Remote Sensing of Environment, (2019), [doi.org/10.1016/j.rse.2019.05.024](https://doi.org/10.1016/j.rse.2019.05.024) (paper for Fmask 4.0).**
 
 **paper 2: Zhu, Z. and Woodcock, C. E., Improvement and Expansion of the Fmask Algorithm: Cloud, Cloud Shadow, and Snow Detection for Landsats 4-7, 8, and Sentinel 2 images, Remote Sensing of Environment (2014) [doi:10.1016/j.rse.2014.12.014](https://doi:10.1016/j.rse.2014.12.014) (paper for Fmask version 3.2).**
 
 **paper 3: Zhu, Z. and Woodcock, C. E., Object-based cloud and cloud shadow detection in Landsat imagery, Remote Sensing of Environment (2012), [doi:10.1016/j.rse.2011.10.028](https://doi:10.1016/j.rse.2011.10.028) (paper for Fmask version 1.6).**
 
-**paper 4: Qiu S., et al. Improving Fmask cloud and cloud shadow detection in mountainous area for Landsats 4–8 images, Remote Sensing of Environment (2017), [doi.org/10.1016/j.rse.2017.07.002](https://doi.org/10.1016/j.rse.2017.07.002) (paper for Mountainous Fmask ([MFmask](https://github.com/qsly09/MFmask)), that has been integrated into this Fmask 4.0).**
+**paper 4: Qiu S., He B., Zhu Z., et al. Improving Fmask cloud and cloud shadow detection in mountainous area for Landsats 4–8 images, Remote Sensing of Environment (2017), [doi.org/10.1016/j.rse.2017.07.002](https://doi.org/10.1016/j.rse.2017.07.002) (paper for Mountainous Fmask ([MFmask](https://github.com/qsly09/MFmask)), that has been integrated into this Fmask 4.0).**
 
-**paper 5: Qiu, S., et al., Making Landsat Time Series Consistent: Evaluating and Improving Landsat Analysis Ready Data, Remote Sensing (2019), [doi.org/10.3390/rs11010051](https://doi.org/10.3390/rs11010051) (First paper introducing Fmask 4.0 for improving LTS consistency).**
+**paper 5: Qiu, S., Lin Y., Shang R., Zhang J., Ma L., and Zhu Z., Making Landsat Time Series Consistent: Evaluating and Improving Landsat Analysis Ready Data, Remote Sensing (2019), [doi.org/10.3390/rs11010051](https://doi.org/10.3390/rs11010051) (First paper introducing Fmask 4.0 for improving LTS consistency).**
+
+
+**The training data** for the Fmask 4.0 are availble at the following link: https://landsat.usgs.gov/landsat-8-cloud-cover-assessment-validation-data
+
+**The validation data** for the Fmask 4.0 are comming soon.
 
 
 After running Fmask 4.0, there will be an image called XXXFmask.tif. The image values are presenting the following classes:

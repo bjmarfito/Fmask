@@ -71,11 +71,11 @@ for i = 1:length(DetectFootPrint.Ndect)
   limsup = polyval(k{i,2},Jmat);
   
   if sum(k{i,2}) == 0 % footprint at low-right corner
-	   Matdetec2(Imat>=liminf) = i ;
+      Matdetec2(Imat>=liminf) = DetectFootPrint.Ndect(i) ;
   elseif sum(k{i,1}) == 0 % footprint at up-left corner
-     Matdetec2(Imat<=limsup) = i ;
+     Matdetec2(Imat<=limsup) = DetectFootPrint.Ndect(i) ;
   else
-     Matdetec2(Imat>=liminf & Imat<=limsup) = i ;
+     Matdetec2(Imat>=liminf & Imat<=limsup) = DetectFootPrint.Ndect(i) ;
   end
   clear liminf limsup;
 end

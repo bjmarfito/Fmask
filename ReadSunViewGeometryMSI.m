@@ -3,6 +3,7 @@ function [MSIinfo Angles CM]  = ReadSunViewGeometryMSI (DataStrip,Granule,BandSe
 % Granule='S2A_OPER_MSI_L1C_TL_SGS__20150817T131818_A000792_T28QBG_N01';
 % this is derived from Fmask 3.3 for Sentinel 2.
 
+% debug Matdetec==DetectFootPrint.Ndect(i) from Matdetec==i
 InterpMethod = 'linear';'nearest';
 
 % Dmain = '/nobackupp6/jju/S2SAFE/';
@@ -239,12 +240,12 @@ for iB = 1:length(BandList)
   % return
   clear dum*
   
-  % figure
-  % hold on
-  % imagesc(X10m,Y10m,Matdetec)
-  % for i = 1:length(S)
-  %   plot(DetectFootPrint.Data{i,1}(:,1),DetectFootPrint.Data{i,1}(:,2),'k')
-  % end
+%   figure
+%   hold on
+%   imagesc(X10m,Y10m,Matdetec)
+%   for i = 1:length(S)
+%     plot(DetectFootPrint.Data{i,1}(:,1),DetectFootPrint.Data{i,1}(:,2),'k')
+%   end
   
   Chp = {'VAA' 'VZA'} ;
   
@@ -255,7 +256,7 @@ for iB = 1:length(BandList)
       Z = MSIinfo.Angles.(Chp{iC})(:,:,BandSel,MSIinfo.Angles.DeteIdList==DetectFootPrint.Ndect(i)) ;
       Z = single(inpaint_nans(Z));
       
-      testMatdetec = Matdetec==i ;
+      testMatdetec = Matdetec==DetectFootPrint.Ndect(i) ;
       [Ista dum] = find(max(testMatdetec,[],2),1,'first');
       [Iend dum] = find(max(testMatdetec,[],2),1,'last');
       [dum Jsta] = find(max(testMatdetec,[],1),1,'first');
