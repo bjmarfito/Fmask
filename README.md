@@ -9,11 +9,11 @@ Fmask 4.4 improved the cloud and cloud shadow detection by integrating a **globa
 
 **Fmask 4.4 softwares/standalones** with graphical User Interface (UI) and without UI on Windows or Linux can be downloaded from this [Google Drive](https://drive.google.com/drive/folders/174EAXc2Fu18ozd2h9d2aMm96OWTwKJ_d?usp=sharing). Note that the Fmask softwares/standalones include MATLAB Compiler Runtime (MCR), with ~2G in total, which do not require a MATLAB license. 
 
-**USE of GLOBAL AUXILIARY DATA: (Matlab code or window standalone users can ignore this)**
+**USE of GLOBAL AUXILIARY DATA: (Matlab code or windows standalone users can ignore this)**
 
 The Matlab code or Windows standalones can automatedly locate the package of the global auxiliaray data, and there will be a notification regarding the dataset (successfully located or not) when runinng the Fmask. However, **particularly for the Linux standalone**, if it fails to locate the auxiliary data, please set up the direct path of the auxiliary data package by using the command, for example, **_Fmask_4_4 "xxx\xxx\xxx\AuxiData"_**. The directory of the auxiliary data \<AuxiData> usually is at the same location as the installed application, or copy the dataset from the [MATLAB code package](https://drive.google.com/file/d/1kkT84f8Yj1HmJE8P3FXkTNH-2HHUUZ4L/view?usp=sharing) to your disk. 
 
-Note that previous versions do not provide any notifications even when it fails to locate the dataset, and if you have already runned the previous versions of Fmask using the Linux standalone, it is highly possible that the dataset has been ignored. In such a case, the detection of cloud and cloud shadows may not be improved compared to the Fmask version 3.3, especially for mountain areas and water regions, where more commission errors may be resulted in, but the results will be more like the ones generated using version 3.3, which is also good to use.
+Note that previous versions do not provide any notifications even when it fails to locate the dataset, and if you have already runned the previous versions of Fmask using the Linux standalone, it is highly possible that the dataset has been ignored. In such a case, the detection of cloud and cloud shadows may not be improved compared to the Fmask version 3.3, especially for mountain areas and water regions, where more commission errors may be resulted in, but the outputs will be more like the ones generated using version 3.3, which are also good to use.
 
 
 **IMPORTANT:**
