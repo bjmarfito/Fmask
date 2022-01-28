@@ -29,6 +29,7 @@ When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud 
 1) Implemented a static seed random generator when detecting cloud shadow, which can ensure the reproducibility of the outputs. (Thanks [NASA HLS](https://hls.gsfc.nasa.gov) team for this suggestion).
 
 ----- 4.4 Version below ---- (4.4 version can be download at this [Google Drive](https://drive.google.com/drive/folders/174EAXc2Fu18ozd2h9d2aMm96OWTwKJ_d?usp=sharing)
+
 2) To fix the errors in computing the ID of detector footprints during the view angle generation of the new Sentinel-2 data [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline) (This may result in wrong locations of cloud shadow), and to provide the notifications regarding the global auxiliary data and the input interface of setting the dataset path (particularly for Linux standalone). (Shi Qiu 1/26/2022)
 
 3) To process the new Sentinel-2 data with [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline), to fix bugs in producing the view angles (detectors sorted) and coverting the datetime of Sentinel-2 data (irregular format sometimes), and to update the functions of processing Landsat Collection 2 data. (Shi Qiu 12/28/2021)
