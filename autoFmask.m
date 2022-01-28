@@ -62,7 +62,7 @@ function clr_pct = autoFmask(varargin)
 
     warning('off','all'); % do not show warning information
     tic
-    fmask_soft_name='Fmask 4.4';
+    fmask_soft_name='Fmask 4.5';
     fprintf('%s start ...\n',fmask_soft_name);
     path_data=pwd;
     

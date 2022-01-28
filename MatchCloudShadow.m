@@ -6,6 +6,7 @@
 % wrong when some parts of cloud are out of the observations.
 % 
 %
+% set static seed for random generator.                    By Shi, at 27 Jan., 2022
 % mask out the shadow of cloud over water or not?  By Shi, at 17, March, 2020
 % fix the bug that cloud shadow would be projected on the other side in Sentinel-2 imagery when the azimuth angle > 180. By Shi, at 19, Jan., 2019
 % use new match similarity becasue we do not know the potential clouds 
@@ -233,6 +234,7 @@ function [ similar_num,data_cloud_matched, data_shadow_matched] = MatchCloudShad
             if obj_num(cloud_type) > max_match_num 
                 % renew the arrays
                 % randomly selection.
+                rng(1);% static seed
                 samples_rand_all=randperm(obj_num(cloud_type)); 
                 samples_mov=samples_rand_all(1:max_match_num);
                 clear samples_rand_all;

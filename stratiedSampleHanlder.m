@@ -31,10 +31,12 @@ function samples_ids=stratiedSampleHanlder(data_dem_clear,dem_b,dem_t,dim,total_
 %     Tempd          Nomalized Temperature (BT).
 %
 %        
-% Author:  Shi Qiu (shi.qiu@ttu.edu)
-% Date: 8. March, 2018
+% Author:  Shi Qiu (shi.qiu@uconn.edu)
+% Date: 27. Jan, 2022
 
 
+% set static seed for random generator.                    By Shi, at 27 Jan., 2022
+%
 % %     num_clear_sky_pixels=numel(data_dem_clear);
 % %     % no enough clear-sky pixels afther removing the pixels out of the upper
 % %     % and lower levels.more than 1/4 total samples (10,000) can be used for 
@@ -70,6 +72,7 @@ function samples_ids=stratiedSampleHanlder(data_dem_clear,dem_b,dem_t,dim,total_
             % find all clear-sky pixels in subgroup.
             samples_ids_tmp=find(data_dem_clear>=i_dem&data_dem_clear<i_dem+ele_strata);
             % randomly selection.
+            rng(1);% static seed
             samples_ids_rand=samples_ids_tmp(randperm(numel(samples_ids_tmp))); 
             clear samples_ids_tmp;
             num_tmp=size(samples_ids_rand,1);
