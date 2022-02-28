@@ -1,6 +1,7 @@
 function [Lmax,Lmin,Qcalmax,Qcalmin,Refmax,Refmin,ijdim_ref,ijdim_thm,reso_ref,...
     reso_thm,ul,bbox,zen,azi,zc,Lnum,doy]=lndhdrread(fullfile_path,filename)
 % Revisions:
+% Add Landsat 9 (Shi 2/17/2022)
 % Read in the latitude and longtitude for automate downloading DEM (Shi 7/9/2017)
 % Read in the product level for Landsat data  (Shi 28/03/2016)
 % Read in the metadata for Landsat 8 (Zhe 04/04/2013)
@@ -249,7 +250,7 @@ if Lnum >= 4 && Lnum <=7
     bbox=[north,south,west,east];
     
   end
-elseif Lnum == 8
+elseif Lnum == 8 || Lnum == 9
     % read in LMAX
     Lmax_B2 = str2double(geo_str(strmatch('RADIANCE_MAXIMUM_BAND_2',geo_str)+2));
     Lmax_B3 = str2double(geo_str(strmatch('RADIANCE_MAXIMUM_BAND_3',geo_str)+2));

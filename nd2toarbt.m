@@ -1,6 +1,7 @@
 function [im_th,TOAref,trgt,ijdim_ref,ul,bbox,zen,azi,zc,B1Satu,B2Satu,B3Satu,resolu]=nd2toarbt(path_top,filename)
 % convert DNs to TOA ref and BT
 % Revisions:
+% Add Landsat 9 (Shi 2/17/2022)
 % Cannot use the GRIDobj to read our band, because it may result in Nan data.
 % (Shi 2/26/2018)
 % Added a target image based on blue band, which will be helpfull to
@@ -553,7 +554,7 @@ if Lnum >= 4 && Lnum <= 7
     TOAref(:,:,5)=im_B5;clear im_B5;
     TOAref(:,:,6)=im_B7;clear im_B7;
     
-elseif Lnum == 8
+elseif Lnum == 8 || Lnum == 9
     % LPGS Upper lef corner alignment (see Landsat handbook for detail)
     ul(1)=ul(1)-15;
     ul(2)=ul(2)+15;

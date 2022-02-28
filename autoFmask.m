@@ -5,7 +5,7 @@ function clr_pct = autoFmask(varargin)
 %
 % Description
 %
-%     This 4.4 version has better cloud, cloud shadow, and snow detection
+%     This 4.6 version has better cloud, cloud shadow, and snow detection
 %     results for Sentinel-2 data and better results (compared to the 3.3
 %     version that is being used by USGS as the Colection 1 QA Band) for
 %     Landsats 4-8 data as well.
@@ -57,12 +57,12 @@ function clr_pct = autoFmask(varargin)
 %
 %        
 % Author:  Shi Qiu (shi.qiu@uconn.edu) and Zhe Zhu (zhe@uconn.edu)
-% Last Date: Jan. 25, 2022
+% Last Date: Feb. 25, 2022
 % Copyright @ GERS Lab, UCONN.
 
     warning('off','all'); % do not show warning information
     tic
-    fmask_soft_name='Fmask 4.5';
+    fmask_soft_name='Fmask 4.6';
     fprintf('%s start ...\n',fmask_soft_name);
     path_data=pwd;
     

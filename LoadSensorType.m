@@ -1,6 +1,7 @@
 function [sensor,num_Lst,InputFile,main_meta] = LoadSensorType(path_data)
 %LOADSENSORTYPE Basic metadata should be loaded first to see which sensor
 %here.
+% Add Landsat 9 , Feb., 17, 2022
 
 %% Search metadate file for Landsat 4-8
     main_meta=dir(fullfile(path_data,'L*MTL.txt'));
@@ -55,7 +56,7 @@ function [sensor,num_Lst,InputFile,main_meta] = LoadSensorType(path_data)
     end
     % define Landsat sensor.
     sensor='';
-    if strcmp(num_Lst,'8')
+    if strcmp(num_Lst,'8') | strcmp(num_Lst,'9')
         sensor='L_OLI_TIRS';
     else
         if strcmp(num_Lst,'4')||strcmp(num_Lst,'5')||strcmp(num_Lst,'6')
