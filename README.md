@@ -1,13 +1,11 @@
 # Fmask
 The software called Fmask (Function of mask) is used for automated **clouds**, **cloud shadows**, **snow**, and **water** masking for Landsats 4-9 and Sentinel 2 images.
 
-If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (shi.qiu@uconn.edu) at Department of Natural Resources and the Environment, University of Connecticut.
+If you have any questions, please contact Zhe Zhu (zhe@uconn.edu) and Shi Qiu (shi.qiu@uconn.edu) at the Department of Natural Resources and the Environment, University of Connecticut.
 
 **IMPORTANT:**
 
-Fmask 4.6 improved the cloud and cloud shadow detection by integrating a **global auxiliray data** including DEM and water layer, and this Github page **ONLY** provides the Matlab code due to the storage limitation of the repository. **The full Matlab code package with GLOBAL AUXILIARY DATA (~1G)** is available at this [Google Drive](https://drive.google.com/drive/folders/1yFXIlxWU7NeaQ4EK3Uj-VR2uggrPWjgo?usp=sharing), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-9 and Sentinel-2 images into a folder. **The folder \<AuxiData>** includes the auxiliary dataset. Note that Mapping Toolbox in Matlab is required for using the source code.
-
-**Fmask 4.6 softwares/standalones** with graphical User Interface (UI) and without UI on Windows or Linux can be downloaded from this [Google Drive](https://drive.google.com/drive/folders/1yFXIlxWU7NeaQ4EK3Uj-VR2uggrPWjgo?usp=sharing). Note that the Fmask softwares/standalones include MATLAB Compiler Runtime (MCR), with ~2G in total, which do not require a MATLAB license. The tutorial can be found at [this link](https://docs.google.com/document/d/1q0Vum7brkUao1UqpHCUdzJBwtXVwHyQ5/edit).
+Fmask 4.6 improved the cloud and cloud shadow detection by integrating a **global auxiliary data** including DEM and water layer, and this GitHub page **ONLY** provides the Matlab code due to the storage limitation of the repository. **The full Matlab code package with GLOBAL AUXILIARY DATA** is available at this [One Drive](https://uconn-my.sharepoint.com/:u:/g/personal/shi_qiu_uconn_edu/ER-i-OheLohHgagFStAlUZAB2gmOW-taK_TA_nHbniJN4Q?e=JwTjTA), where **autoFmask** is the main function for processing an image. **autoFmaskBacth** can process all Landsats 4-9 and Sentinel-2 images into a folder. **The folder \<AuxiData>** includes the auxiliary dataset. Note that Mapping Toolbox in Matlab is required for using the source code. The **standalone** for Linux can be found in the folder **<Fmask_4_6\for_redistribution>**. The tutorial can be found at [this link](https://docs.google.com/document/d/1q0Vum7brkUao1UqpHCUdzJBwtXVwHyQ5/edit).
 
 **USE of GLOBAL AUXILIARY DATA: (Matlab code or windows standalone users can ignore this)**
 
@@ -29,29 +27,29 @@ When making the accuracy assessment for Fmask, please dilate 3 pixels for cloud 
 # 4.6 Version
 1) Updated for Landsat 9. (2/27/2022)
 
------ 4.5 Version below ---- (4.5 version can be download at this [Google Drive](https://drive.google.com/drive/folders/1isoMVCrYo1YTc6bLglbmpJKjMCJl33cg?usp=sharing))
+----- 4.5 Version below ----
 
 2) Implemented a static seed random generator when detecting cloud shadow, which can ensure the reproducibility of the outputs. (Thanks [NASA HLS](https://hls.gsfc.nasa.gov) team for this suggestion).
 
------ 4.4 Version below ---- (4.4 version can be download at this [Google Drive](https://drive.google.com/drive/folders/174EAXc2Fu18ozd2h9d2aMm96OWTwKJ_d?usp=sharing))
+----- 4.4 Version below ----
 
 3) To fix the errors in computing the ID of detector footprints during the view angle generation of the new Sentinel-2 data [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline) (This may result in wrong locations of cloud shadow), and to provide the notifications regarding the global auxiliary data and the input interface of setting the dataset path (particularly for Linux standalone). (Shi Qiu 1/26/2022)
 
 4) To process the new Sentinel-2 data with [processing baseline 04.00](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/processing-baseline), to fix bugs in producing the view angles (detectors sorted) and coverting the datetime of Sentinel-2 data (irregular format sometimes), and to update the functions of processing Landsat Collection 2 data. (Shi Qiu 12/28/2021)
 
------ 4.3 version below ---- (4.3 version can be download at this [Google Drive](https://drive.google.com/drive/folders/1dfQRNASMiFnE4ipFAYVwMn98eK9B9BiQ?usp=sharing))
+----- 4.3 version below ----
 
 5) Fixed the bug when GRIDobj reads geotiff with several tiffinfos (see GRIDobj.m). (Shi Qiu 10/15/2020)
 
------ 4.2 version below ---- (4.2 version can be download at this [Google Drive](https://drive.google.com/drive/folders/1bVwvlGDFOsWnVj5b3MqI5yqRDoi8g935?usp=sharing))
+----- 4.2 version below ----
 
 6) Update Fmask tool for processing Landsat Collection 2 data; and allow the cloud probability thershold in a larger range such as [-100, 100] in the GUI version. (Shi Qiu 4/8/2020)
 
------ 4.1 version below ---- (4.1 version can be download at this [Google Drive](https://drive.google.com/open?id=1l84t_lbp5Cp5v8L_Rbzk3WQHap7MdFwc) for Matlab code and this [Google Drive](https://drive.google.com/drive/folders/1oVefP9G-TD2vhoCaaKCxQjvAnUlrwB19?usp=sharing) for standalones)
+----- 4.1 version below ----
 
 7) The cloud shadow mask over water would not be provided at default settings since this will be less meaningful to use and very time-consuming to process. At the same time, fixed the bug that the auxiliary data may not be used for some Sentinel-2 images, of which the extent in the metadata is defined in [0 360] rather than [-180 180]. (Shi Qiu 3/17/2020)
 
------ 4.0 version below ---- (4.0 version can be download at this [Google Drive](https://drive.google.com/open?id=1SXBnEBDJ1Kbv7IQ9qIgqloYHZfdP6O1O))
+----- 4.0 version below ----
 
 8) Fixed the bug that the cloud shadows in Sentinel-2 imagery would be projected along a wrong direction when solar azimuth angle > 180 degrees. (Shi Qiu 01/19/2019)
 
